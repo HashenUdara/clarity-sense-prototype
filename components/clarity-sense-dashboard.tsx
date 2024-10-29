@@ -5,15 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarProvider,
-} from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -23,13 +15,10 @@ import {
   Download,
   Play,
   Pause,
-  Home,
-  Settings,
-  HelpCircle,
-  LogOut,
   Clock,
   Users,
 } from "lucide-react";
+import { AppSidebar } from "./app-sidebar";
 
 export function ClaritySenseDashboardComponent() {
   const [file, setFile] = useState<File | null>(null);
@@ -94,8 +83,8 @@ export function ClaritySenseDashboardComponent() {
 
   return (
     <SidebarProvider>
-      <div className="flex h-screen bg-gray-100">
-        <Sidebar className="w-64 bg-white border-r">
+      <div className="flex h-screen w-full">
+        {/* <Sidebar className="w-64 bg-white border-r">
           <SidebarHeader>
             <div className="p-4">
               <h2 className="text-2xl font-bold text-blue-600">
@@ -137,7 +126,9 @@ export function ClaritySenseDashboardComponent() {
               Log out
             </Button>
           </div>
-        </Sidebar>
+        </Sidebar> */}
+
+        <AppSidebar />
 
         <div className="flex-1 overflow-auto">
           <header className="bg-white shadow-sm">
