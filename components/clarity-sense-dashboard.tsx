@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import { AppSidebar } from "./app-sidebar";
 import { Separator } from "./ui/separator";
+import { ModeToggle } from "./theme-toggler";
 
 export function ClaritySenseDashboardComponent() {
   const [file, setFile] = useState<File | null>(null);
@@ -95,7 +96,7 @@ export function ClaritySenseDashboardComponent() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+        <header className="flex h-16   justify-between shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
@@ -110,6 +111,9 @@ export function ClaritySenseDashboardComponent() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
+          </div>
+          <div className="mr-4">
+            <ModeToggle />
           </div>
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 pt-0 max-w-screen-2xl  py-6 sm:px-6 lg:px-8">
@@ -131,7 +135,7 @@ export function ClaritySenseDashboardComponent() {
                   </CardHeader>
                   <CardContent>
                     <div
-                      className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center cursor-pointer hover:border-blue-500 transition-colors"
+                      className="border-2 border-dashed border-border rounded-lg p-12 text-center cursor-pointer hover:border-blue-500 transition-colors"
                       onDragOver={handleDragOver}
                       onDrop={handleDrop}
                     >
@@ -143,17 +147,20 @@ export function ClaritySenseDashboardComponent() {
                         accept="audio/*"
                       />
                       <label htmlFor="audio-upload" className="cursor-pointer">
-                        <Upload className="mx-auto h-12 w-12 text-gray-400" />
-                        <p className="mt-2 text-sm text-gray-600">
+                        <Upload
+                          className="mx-auto h-12 w-12 text-muted-foreground/80"
+                          strokeWidth={1.7}
+                        />
+                        <p className="mt-2 text-sm  text-muted-foreground">
                           Drag and drop your audio file here, or click to select
                         </p>
                       </label>
                     </div>
                     {file && (
-                      <div className="mt-4 flex items-center justify-between bg-blue-50 p-3 rounded-md">
+                      <div className="mt-4 flex items-center justify-between  bg-muted/50 p-3 rounded-md">
                         <div className="flex items-center">
                           <FileAudio className="h-5 w-5 text-blue-500 mr-2" />
-                          <span className="text-sm text-gray-700">
+                          <span className="text-sm  text-muted-foreground">
                             {file.name}
                           </span>
                         </div>
@@ -162,7 +169,7 @@ export function ClaritySenseDashboardComponent() {
                     <Button
                       onClick={handleUpload}
                       size={"lg"}
-                      className="w-full mt-4 rounded-full"
+                      className="w-full mt-4 rounded-full    "
                     >
                       {isProcessing ? "Processing..." : "Upload and Process"}
                     </Button>
@@ -181,11 +188,11 @@ export function ClaritySenseDashboardComponent() {
                         >
                           <div className="flex items-center">
                             <FileAudio className="h-5 w-5 text-blue-500 mr-2" />
-                            <span className="text-sm text-gray-700">
+                            <span className="text-sm  text-secondary-foreground">
                               {file.name}
                             </span>
                           </div>
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-muted-foreground">
                             {file.date}
                           </span>
                         </li>
@@ -200,18 +207,20 @@ export function ClaritySenseDashboardComponent() {
                   <CardTitle>Transcript</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="bg-white border border-gray-200 rounded-lg p-4 h-64 overflow-y-auto mb-4">
+                  <div className=" bg-muted border border-border rounded-lg p-4 h-64 overflow-y-auto mb-4">
                     {transcript ? (
-                      <p className="text-gray-700">{transcript}</p>
+                      <p className=" text-white font-medium italic">
+                        {transcript}
+                      </p>
                     ) : (
-                      <p className="text-gray-400 italic">
+                      <p className=" text-muted-foreground italic">
                         Transcript will appear here after processing
                       </p>
                     )}
                   </div>
                   <Card className="my-4">
                     <CardHeader>
-                      <CardTitle>Audio Player</CardTitle>
+                      <CardTitle>Play Denoised Audio</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="flex items-center space-x-4">
@@ -257,7 +266,7 @@ export function ClaritySenseDashboardComponent() {
                             }
                           />
                         </div>
-                        <span className="text-sm text-gray-500">
+                        <span className="text-sm  text-muted-foreground">
                           {Math.floor(audioProgress / 60)}:
                           {(audioProgress % 60).toString().padStart(2, "0")}
                         </span>
