@@ -120,11 +120,12 @@ export function ClaritySenseDashboardComponent() {
           <div className="px-4 py-6 sm:px-0">
             <div className=" mb-10 ">
               <h2 className="text-3xl  font-bold tracking-tight">
-                Denoise and Transcribe with Ease
+                Elevate Audio Clarity
               </h2>
               <p className="text-muted-foreground">
                 Clean up your audio and get detailed transcripts in seconds.{" "}
-                Just upload, process, and download
+                <br />
+                Just upload, process, and download - Simple, Powerful, Enhanced
               </p>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -220,7 +221,7 @@ export function ClaritySenseDashboardComponent() {
                   </div>
                   <Card className="my-4">
                     <CardHeader>
-                      <CardTitle>Play Denoised Audio</CardTitle>
+                      <CardTitle>Play Enhanced Audio</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="flex items-center space-x-4">
@@ -274,7 +275,8 @@ export function ClaritySenseDashboardComponent() {
                     </CardContent>
                   </Card>
                   <Button size={"lg"} className="w-full rounded-full">
-                    <Download className="mr-2 h-4 w-4" /> Download clean audio
+                    <Download className="mr-2 h-4 w-4" /> Download Enhanced
+                    Audio
                   </Button>
                 </CardContent>
               </Card>
